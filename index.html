@@ -10,9 +10,14 @@
             line-height: 1.6;
             margin: 0;
             padding: 20px;
-            max-width: 800px;
-            margin: 0 auto;
             background-color: #f5f5f5;
+        }
+
+        .container {
+            display: flex;
+            max-width: 1200px;
+            margin: 0 auto;
+            gap: 20px;
         }
 
         header {
@@ -20,6 +25,19 @@
             padding: 20px 0;
             border-bottom: 2px solid #333;
             margin-bottom: 30px;
+        }
+
+        main {
+            flex: 1;
+        }
+
+        .sidebar {
+            width: 250px;
+            background-color: white;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            height: fit-content;
         }
 
         .blog-post {
@@ -39,6 +57,30 @@
             color: #666;
             font-size: 0.9em;
         }
+
+        .sidebar h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .sidebar ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar a {
+            color: #333;
+            text-decoration: none;
+        }
+
+        .sidebar a:hover {
+            color: #666;
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -47,24 +89,31 @@
         <p>Welcome to my thoughts and ideas</p>
     </header>
 
-    <main>
-        <article class="blog-post">
-            <h2>First Blog Post</h2>
-            <p class="date">January 15, 2024</p>
-            <p>This is my first blog post. I'm excited to share my thoughts and experiences with you all.</p>
-        </article>
+    <div class="container">
+        <main>
+            <iframe id="blog-content" src="posts/first-post.html" style="width: 100%; border: none; height: 300px;"></iframe>
+        </main>
 
-        <article class="blog-post">
-            <h2>Second Blog Post</h2>
-            <p class="date">January 16, 2024</p>
-            <p>Here's another interesting post about my journey in technology and programming.</p>
-        </article>
+        <aside class="sidebar">
+            <h3>Recent Posts</h3>
+            <ul>
+                <li><a href="posts/first-post.html" target="blog-content">First Blog Post</a></li>
+                <li><a href="posts/second-post.html" target="blog-content">Second Blog Post</a></li>
+                <li><a href="posts/third-post.html" target="blog-content">Third Blog Post</a></li>
+            </ul>
+            <h3>About</h3>
+            <p>Welcome to my blog where I share my thoughts and experiences.</p>
+            <h3>Contact</h3>
+            <p>Follow me on social media or email me at contact@example.com</p>
+        </aside>
+    </div>
 
-        <article class="blog-post">
-            <h2>Third Blog Post</h2>
-            <p class="date">January 17, 2024</p>
-            <p>Exploring new ideas and sharing what I've learned along the way.</p>
-        </article>
-    </main>
+    <script>
+        // Adjust iframe height based on content
+        window.addEventListener('message', function(e) {
+            const iframe = document.getElementById('blog-content');
+            iframe.style.height = e.data + 'px';
+        });
+    </script>
 </body>
-</html></article></html>
+</html>
